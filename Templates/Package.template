@@ -2,15 +2,15 @@
 import PackageDescription
 
 let package = Package(
-  name: "XrayKit",
-  platforms: [.iOS(.v12), .macOS(.v12)],
+  name: "XRay",
+  platforms: [.iOS(.v15)],
   products: [
-    .library(name: "XrayKit", targets: ["XrayKit"])
+    .library(name: "XRay", targets: ["XRay"])
   ],
   targets: [
     .binaryTarget(
-      name: "XrayKit",
-      url: "https://github.com/arror/XrayKit/releases/download/VERSION/XrayKit.xcframework.zip",
+      name: "XRay",
+      url: "https://github.com/GFWFighter/XRayApple/releases/download/VERSION/XRay.xcframework.zip",
       checksum: "CHECKSUM"
     )
   ]
