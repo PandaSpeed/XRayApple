@@ -34,7 +34,7 @@ jobs:
         run: |
           cd xray
           make ios
-          zip -ry ./build/XRay.xcframework.zip ./XRay.xcframework
+          zip -ry ./XRay.xcframework.zip ./build/XRay.xcframework
           
       - name: Render Template
         run: |
