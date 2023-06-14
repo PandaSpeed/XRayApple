@@ -17,8 +17,7 @@ jobs:
 
       - uses: actions/checkout@v3
         with:
-          repository: ${{secrets.RESPOSITORY}}
-          token: ${{secrets.PAT}}
+          repository: GFWFighter/xray-wrapper
           path: 'xray'
           
       - name: Setup Go
@@ -34,12 +33,12 @@ jobs:
       - name: Build xcframework
         run: |
           cd xray
-          make
-          zip -ry XrayKit.xcframework.zip ./XrayKit.xcframework
+          make ios
+          zip -ry ./build/XRay.xcframework.zip ./XRay.xcframework
           
       - name: Render Template
         run: |
-          export TEMP=`shasum -a 256 xray/XrayKit.xcframework.zip`
+          export TEMP=`shasum -a 256 xray/XRay.xcframework.zip`
           export CHECKSUM=${TEMP:0:64}
           cd Templates
           sed -i "_bak" "s/VERSION/${{ github.event.inputs.version }}/g" Package.template
@@ -52,7 +51,7 @@ jobs:
           
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: XrayKit Release ${{ github.event.inputs.version }}!!!
+          commit_message: XRay Release ${{ github.event.inputs.version }}!!!
           commit_user_name: Arror
           commit_user_email: hallo.maqiang@icloud.com
           tagging_message: ${{ github.event.inputs.version }}
@@ -63,4 +62,4 @@ jobs:
         with:
           draft: false
           tag_name: ${{ github.event.inputs.version }}
-          files: xray/XrayKit.xcframework.zip
+          files: xray/XRay.xcframework.zip
