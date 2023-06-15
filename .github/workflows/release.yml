@@ -34,11 +34,12 @@ jobs:
         run: |
           cd xray
           make apple
-          zip -ry ./XRay.xcframework.zip ./build/XRay.xcframework
+          cd build
+          zip -ry ./XRay.xcframework.zip ./XRay.xcframework
           
       - name: Render Template
         run: |
-          export TEMP=`shasum -a 256 xray/XRay.xcframework.zip`
+          export TEMP=`shasum -a 256 xray/build/XRay.xcframework.zip`
           export CHECKSUM=${TEMP:0:64}
           cd Templates
           sed -i "_bak" "s/VERSION/${{ github.event.inputs.version }}/g" Package.template
@@ -62,4 +63,4 @@ jobs:
         with:
           draft: false
           tag_name: ${{ github.event.inputs.version }}
-          files: xray/XRay.xcframework.zip
+          files: xray/build/XRay.xcframework.zip
