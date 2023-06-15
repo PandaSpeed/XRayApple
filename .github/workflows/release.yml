@@ -33,7 +33,7 @@ jobs:
       - name: Build xcframework
         run: |
           cd xray
-          make ios
+          make apple
           zip -ry ./XRay.xcframework.zip ./build/XRay.xcframework
           
       - name: Render Template
