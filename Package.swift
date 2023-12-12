@@ -10,8 +10,8 @@ let package = Package(
   targets: [
     .binaryTarget(
       name: "XRay",
-      url: "https://github.com/GFWFighter/XRayApple/releases/download/1.8.15/XRay.xcframework.zip",
-      checksum: "d6358a3419f02f5fccda3367e0ec51066a366a4ff8f2b9ae88f974f124e6da6a"
+      url: "https://github.com/GFWFighter/XRayApple/releases/download/1.8.16/XRay.xcframework.zip",
+      checksum: "ba9b88c2c78365381573ed86f0528bc5ea5f6cca0ae5c726b73c132c2bf38d15"
     )
   ]
 )
