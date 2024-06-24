@@ -10,8 +10,8 @@ let package = Package(
   targets: [
     .binaryTarget(
       name: "XRay",
-      url: "https://github.com/PandaSpeed/XRayApple/releases/download/1.8.19/XRay.xcframework.zip",
-      checksum: "620924cf79a36d10105ec7300b20406365911d4ca6a4435cc8b62a77cbcccfd9"
+      url: "https://github.com/PandaSpeed/XRayApple/releases/download/2.8.11/XRay.xcframework.zip",
+      checksum: "2c9b287a294ed5efcc68ea31355c13e718677a0b8e5a8a3853a9d1702250a94b"
     )
   ]
 )
