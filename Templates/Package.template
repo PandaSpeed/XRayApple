@@ -10,7 +10,7 @@ let package = Package(
   targets: [
     .binaryTarget(
       name: "XRay",
-      url: "https://github.com/GFWFighter/XRayApple/releases/download/VERSION/XRay.xcframework.zip",
+      url: "https://github.com/PandaSpeed/XRayApple/releases/download/VERSION/XRay.xcframework.zip",
       checksum: "CHECKSUM"
     )
   ]

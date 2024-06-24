@@ -13,17 +13,28 @@ jobs:
     runs-on: macOS-12
     steps:
 
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/checkout@v3
+      - name: Generate a token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
         with:
-          repository: GFWFighter/xray-wrapper
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }} # Create a token for all repositories in the current owner's installation    
+
+      - uses: actions/checkout@v4
+        with:
+          repository: PandaSpeed/xray-wrapper
+          token: ${{ steps.generate-token.outputs.token }}
           path: 'xray'
           
       - name: Setup Go
-        uses: actions/setup-go@v3.5.0
+        uses: actions/setup-go@v4
         with:
-          go-version: '1.21'
+          go-version: '1.22.4'
+          #go-version-file: 'go.mod'
       
       - name: Setup Gomobile
         run: |
@@ -53,8 +64,9 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: XRay Release ${{ github.event.inputs.version }}!!!
-          commit_user_name: GFWFighter
-          commit_user_email: gfwfightingsoldier@gmail.com
+          commit_user_name: pandaspeed-bot
+          commit_user_email: "897900+pandaspeed-bot[bot]@users.noreply.github.com"
+          commit_author: pandaspeed-bot <897900+pandaspeed-bot[bot]@users.noreply.github.com>
           tagging_message: ${{ github.event.inputs.version }}
           file_pattern: 'Package.swift'
           
